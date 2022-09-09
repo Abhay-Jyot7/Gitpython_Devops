@@ -20,8 +20,7 @@ def commit_files(url , number , commit_message):
         repo.git.add(all=True) #Add the file to the repo
         repo.index.commit(commit_message) #Put a commit message
         repo.create_remote("origin", url=url)
-        repo.remotes.origin.push(refspec='HEAD:refs/heads/main', force=True)
-        #repo.git.push("origin" ,"main" ,force=True)      
+        repo.remotes.origin.push(refspec='HEAD:refs/heads/main', force=True)   
 
 
     elif number == 1:#Case 3: If the file is already present in github and we want to update it in the main branch
@@ -35,7 +34,6 @@ def commit_files(url , number , commit_message):
 
 def pull_files(url):
     repo_dir =  (r'C:\Users\abc\Desktop\newtest111') #Folder that is to be pulled from github
-    #repo = Repo(repo_dir)
 
     repo = Repo.init(repo_dir , env={"GIT_SSH_COMMAND": 'ssh -i ~/.ssh/id_rsa'})
     repo.create_remote("origin", url=url)
